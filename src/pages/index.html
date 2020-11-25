@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<h2>Choose and upload your Logo and Video (Max 50MB)</h2>
+  <!-- "https://3.129.243.241:8443//tsb//uploadImage" -->
+  <!-- "http://localhost:8080//uploadImage" -->
+	<form id="imageUploadForm" method="POST" action="https://3.129.243.241:8443//uploadImage" enctype="multipart/form-data">
+	    <input id="newLogoImagePath" type="file" name="file" accept="image/x-png, image/jpeg"/>
+	    <input type="submit" name="upload" value="Upload Logo"/>
+        <br><br>
+	</form>
+    <form id="videoUploadForm" method="POST" action="https://3.129.243.241:8443//uploadVideo" enctype="multipart/form-data">
+        <input id="newVideoPath" type="file" name="file" accept="video/*"/>
+        <input type="submit" name="upload" value="Upload Clip"/>
+        <br><br>
+    </form>
+    <img src = "uploading.gif" id="uploading" hidden>
+    <button> Test Post request </button>
+</body>
+
+<script>
+$(document).ready(function (e) {
+    $('#imageUploadForm').on('submit',(function(e) {
+        e.preventDefault();
+        $('#uploading').show();
+        var formData = new FormData(this);
+        $.ajax({
+            type:'POST',
+            url: $(this).attr('action'),
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+                console.log("success");
+                console.log(data);
+                var filename = $('#newLogoImagePath').get(0).files[0].name;
+                alert(data + ' The file name is : ### ' + filename + ' ###');
+            },
+            error: function(data){
+                console.log("error");
+                console.log(data);
+                alert("Error was received!");
+            },
+            complete: function(){
+                $('#uploading').hide()
+            }
+        });
+    }));
+     $('#videoUploadForm').on('submit',(function(e) {
+        e.preventDefault();
+        $('#uploading').show();
+        var formData = new FormData(this);
+        $.ajax({
+            type:'POST',
+            url: $(this).attr('action'),
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+                console.log("success");
+                console.log(data);
+                var filename = $('#newVideoPath').get(0).files[0].name;
+                alert(data + ' The file name is : ### ' + filename + ' ###');
+            },
+            error: function(data){
+                console.log("error");
+                console.log(data);
+                alert("Error was received!");
+            },
+            complete: function(){
+                $('#uploading').hide()
+            }
+        });
+    }));
+
+     // Now test POST request : http://localhost:8080//savegame
+   $("button").click(function(){
+    var appearances = [{startTime:2.5,toleranceTime:2.2,startX:15.0,startY:83.0},{startTime:4.1,toleranceTime:2.4,startX:27.0,startY:70.0}]
+    console.log(appearances)
+    console.log(JSON.stringify(appearances))
+    // $.post("http://localhost:8080//savegame",
+    $.post("https://3.129.243.241:8443//savegame",
+    {
+      gameType: "spotlogo",
+      maxScreenshotsNumber: 5,
+      totalNumberOfAppearances: 10,
+      logoImagePath: "images/red_apple.png",
+      logoSize: 10,
+      touchSize: 20,
+      videoPath: "videos/Dr Oetker Corona.mp4",
+      distortionSpeed: 50,
+      distortionType: "water",
+      stillImagePath: "images/still_image.png",
+      gameDuration: 22,
+      appearances: JSON.stringify(appearances)
+      // appearances: {startTime:2, toleranceTime:2, startX:2, startY:2}
+    },
+    function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
+});
+
+</script>
+
+</html>
