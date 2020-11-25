@@ -45,9 +45,9 @@ export default {
       console.log('delete: ' + gameID)
       $.ajax({
         type: 'GET',
-        // https://3.129.243.241:8443//tsb//deletegame
+        // https://playaclip.com:8443//tsb//deletegame
         // http://localhost:8080//deletegame
-        url: 'https://3.129.243.241:8443//deletegame',
+        url: 'https://playaclip.com:8443//deletegame',
         // url: 'http://localhost:8080//deletegame',
         data: {
           gameID: gameID
@@ -89,7 +89,7 @@ export default {
     loadAllGames () {
       $.ajax({
         type: 'GET',
-        url: 'https://3.129.243.241:8443/getallgames',
+        url: 'https://playaclip.com:8443/getallgames',
         // url: 'http://localhost:8080/getallgames,
         success: function (result) {
           // console.log(result)

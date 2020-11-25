@@ -5,14 +5,14 @@
 </head>
 <body>
 	<h2>Choose and upload your Logo and Video (Max 50MB)</h2>
-  <!-- "https://3.129.243.241:8443//tsb//uploadImage" -->
+  <!-- "https://playaclip.com:8443//tsb//uploadImage" -->
   <!-- "http://localhost:8080//uploadImage" -->
-	<form id="imageUploadForm" method="POST" action="https://3.129.243.241:8443//uploadImage" enctype="multipart/form-data">
+	<form id="imageUploadForm" method="POST" action="https://playaclip.com:8443//uploadImage" enctype="multipart/form-data">
 	    <input id="newLogoImagePath" type="file" name="file" accept="image/x-png, image/jpeg"/>
 	    <input type="submit" name="upload" value="Upload Logo"/>
         <br><br>
 	</form>
-    <form id="videoUploadForm" method="POST" action="https://3.129.243.241:8443//uploadVideo" enctype="multipart/form-data">
+    <form id="videoUploadForm" method="POST" action="https://playaclip.com:8443//uploadVideo" enctype="multipart/form-data">
         <input id="newVideoPath" type="file" name="file" accept="video/*"/>
         <input type="submit" name="upload" value="Upload Clip"/>
         <br><br>
@@ -84,7 +84,7 @@ $(document).ready(function (e) {
     console.log(appearances)
     console.log(JSON.stringify(appearances))
     // $.post("http://localhost:8080//savegame",
-    $.post("https://3.129.243.241:8443//savegame",
+    $.post("https://playaclip.com:8443//savegame",
     {
       gameType: "spotlogo",
       maxScreenshotsNumber: 5,

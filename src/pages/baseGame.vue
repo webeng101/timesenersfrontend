@@ -104,9 +104,9 @@
           class='slider'>
         <br><br>
       </div>
-      <!-- https://3.129.243.241:8443//tsb//uploadImage -->
+      <!-- https://playaclip.com:8443//tsb//uploadImage -->
       <!-- http://localhost:8080//uploadImage -->
-      <form v-if="gameType === 'spotlogo'" id="imageUploadForm" method="POST" action="https://3.129.243.241:8443//uploadImage" enctype="multipart/form-data">
+      <form v-if="gameType === 'spotlogo'" id="imageUploadForm" method="POST" action="https://playaclip.com:8443//uploadImage" enctype="multipart/form-data">
         <label>Upload your logo:</label> &nbsp;
         <input v-model="logoImagePath" type='text' id='logoImagePath'  disabled> &nbsp;
         <input id="newLogoImagePath" type="file" name="file" accept="image/x-png, image/jpeg"/>
@@ -123,9 +123,9 @@
         <br><br>
       </div>
       <div v-else>
-        <!-- https://3.129.243.241:8443//tsb//uploadVideo -->
+        <!-- https://playaclip.com:8443//tsb//uploadVideo -->
         <!-- http://localhost:8080//uploadVideo -->
-        <form v-if="gameType === 'spotlogo'" id="videoUploadForm" method="POST" action="https://3.129.243.241:8443//uploadVideo" enctype="multipart/form-data">
+        <form v-if="gameType === 'spotlogo'" id="videoUploadForm" method="POST" action="https://playaclip.com:8443//uploadVideo" enctype="multipart/form-data">
           <label for='videoPath'>Clip:</label> &nbsp;
           <input type='text' id='videoPath' name='videoPath' disabled> &nbsp;
           <input id="newVideoPath" type="file" name="file" accept="video/*"/>
@@ -354,9 +354,9 @@ export default {
       $.ajax({
         type: 'GET',
         async: false,
-        url: 'https://3.129.243.241:8443/getgame?gameID=' + gameID + '&password=' + window.storage.password,
+        url: 'https://playaclip.com:8443/getgame?gameID=' + gameID + '&password=' + window.storage.password,
         // url: 'http://localhost:8080/getgame?gameID=' + gameID + '&password=' + window.storage.password,
-        // test via browser >> https://3.129.243.241:8443/tsb/getgame?gameID=spotlogo0
+        // test via browser >> https://playaclip.com:8443/tsb/getgame?gameID=spotlogo0
         // test via browser >> http://localhost:8080/getgame?gameID=spotlogo0
         success: function (result) {
           console.log(result)
@@ -890,9 +890,9 @@ export default {
       $('#createGameButton').prop('disabled', true)
       $.ajax({
         type: 'POST',
-        // https://3.129.243.241:8443//tsb//creategame
+        // https://playaclip.com:8443//tsb//creategame
         // http://localhost:8080//creategame
-        url: 'https://3.129.243.241:8443//creategame',
+        url: 'https://playaclip.com:8443//creategame',
         data: {
           gameType: this.gameType,
           maxScreenshotsNumber: this.maxScreenshotsNumber,

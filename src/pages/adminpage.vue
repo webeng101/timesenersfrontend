@@ -50,7 +50,7 @@ export default {
       $.ajax({
         type: 'GET',
         async: false,
-        url: 'https://3.129.243.241:8443/getpasswords?password=' + window.storage.password,
+        url: 'https://playaclip.com:8443/getpasswords?password=' + window.storage.password,
         // url: 'http://localhost:8080/getpasswords?password=' + window.storage.password,
         dataType: 'json',
         success: result => {
